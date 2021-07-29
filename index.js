@@ -30,6 +30,10 @@ rollBtn.addEventListener("click", () => {
   renderState();
 });
 
+resetBtn.addEventListener("click", resetGame);
+
+// Functions
+
 function renderState() {
   player1Scoreboard.textContent = player1Score;
   player2Scoreboard.textContent = player2Score;
@@ -43,12 +47,12 @@ function renderState() {
 
   if (player1Turn) {
     message.textContent = "Player 1 Turn";
-    player1Dice.classList.toggle("active");
-    player2Dice.classList.toggle("active");
+    player1Dice.classList.add("active");
+    player2Dice.classList.remove("active");
   } else {
     message.textContent = "Player 2 Turn";
-    player1Dice.classList.toggle("active");
-    player2Dice.classList.toggle("active");
+    player1Dice.classList.remove("active");
+    player2Dice.classList.add("active");
   }
 }
 
@@ -60,4 +64,19 @@ function checkWinner() {
     message.textContent = "Player 2 won!";
     return 1;
   }
+}
+
+function resetGame() {
+  player1Turn = true;
+
+  player1Score = 0;
+  player2Score = 0;
+
+  player1Dice.textContent = "-";
+  player2Dice.textContent = "-";
+
+  rollBtn.style.display = "block";
+  resetBtn.style.display = "none";
+
+  renderState();
 }
