@@ -19,13 +19,13 @@ rollBtn.addEventListener("click", () => {
 
   if (player1Turn) {
     player1Score += outcome;
-    player1Turn = false;
     player1Dice.textContent = outcome;
   } else {
     player2Score += outcome;
-    player1Turn = true;
     player2Dice.textContent = outcome;
   }
+
+  player1Turn = !player1Turn;
 
   renderState();
 });
